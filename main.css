@@ -1,0 +1,85 @@
+body{
+    margin: 0px;
+}
+
+.content-wrapper{
+    margin: 28px;
+    height: calc(100vh - 48px);
+    border-width: 1px;
+    border-style: solid;
+    border-color: #B18A22;
+
+}
+
+.content-wrapper:before{
+    content: " ";
+    position: absolute;
+    z-index: -1;
+    top: 23px;
+    left: 23px;
+    right: 23px;
+    bottom: 12px;
+    border: 1px solid #B18A22;
+}
+
+.logo-wrapper{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-top: 13px;
+}
+
+.text-wrapper, .locations-wrapper{
+    margin: 17px;
+    margin-top: 25px;
+}
+
+.text-wrapper{
+    justify-content: center;
+    display: flex;
+}
+
+.location-row{
+    display: flex;
+}
+
+.location-button{
+    flex-grow: 1;
+    background: url(assets/Location-background.svg);
+    background-repeat: no-repeat;
+    text-align: center;
+    background-position: center;
+    color: #B18A22;
+    padding: 20px;
+}
+
+p{
+    font-size: 12px; 
+    color: #B18A22;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 400;
+    text-align: center;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+h1{
+    color: #B18A22;
+    font-family: 'Cormorant Infant', serif;
+    font-weight: 400;
+    text-align: center;
+}
+
+h7, h3{
+    color: #B18A22;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 700;
+    text-align: center;
+    margin:0;
+}
+
+#locationdistance{
+    margin:0;
+}
