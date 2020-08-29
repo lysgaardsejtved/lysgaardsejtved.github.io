@@ -59,6 +59,7 @@
 
             window.setInterval(function(){
                 window.navigator.geolocation.watchPosition(function(pos) {
+                    enableHighAccuracy: true,
 
                     console.log(pos); 
                     console.log(
