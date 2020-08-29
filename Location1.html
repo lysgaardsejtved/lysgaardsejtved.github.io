@@ -27,6 +27,7 @@
 
                 <h3>Afstand</h1> 
                 <h1 id=locationdistance><span id="locationDistance"></span> m</h1>
+                <h1 id=locationdistance><span id="locationDistance2"></span> m</h1>
             </div>
 
         </div>
@@ -59,7 +60,14 @@
 
             window.setInterval(function(){
                 window.navigator.geolocation.watchPosition(function(pos) {
-                    enableHighAccuracy: true,
+                    processGeolocation,
+                        // Optional settings below
+                        geolocationError,
+                        {
+                        timeout: 0,
+                        enableHighAccuracy: true,
+                        maximumAge: Infinity
+                    }
 
                     console.log(pos); 
                     console.log(
@@ -71,6 +79,20 @@
 
                 });
             }, 50);
+
+            //Tracking users position
+            watchId = navigator.geolocation.watchPosition(
+                function(pos)
+                processGeolocation,
+                    // Optional settings below
+                    geolocationError,
+                    {
+                    timeout: 0,
+                    enableHighAccuracy: true,
+                    maximumAge: Infinity
+
+                }
+            );
 
         </script>
 
