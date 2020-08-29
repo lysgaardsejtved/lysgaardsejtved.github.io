@@ -58,7 +58,7 @@
             }
 
             window.setInterval(function(){
-                window.navigator.geolocation.getCurrentPosition(function(pos) {
+                window.navigator.geolocation.watchPosition(function(pos) {
 
                     console.log(pos); 
                     console.log(
