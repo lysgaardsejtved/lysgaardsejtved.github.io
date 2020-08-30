@@ -27,7 +27,6 @@
 
                 <h3>Afstand</h1> 
                 <h1 id=locationdistance><span id="locationDistance"></span> m</h1>
-                <h1 id=locationdistance><span id="locationDistance2"></span> m</h1>
             </div>
 
         </div>
@@ -59,40 +58,27 @@
             }
 
             window.setInterval(function(){
-                window.navigator.geolocation.watchPosition(function(pos) {
-                    processGeolocation,
-                        // Optional settings below
-                        geolocationError,
-                        {
-                        timeout: 0,
-                        enableHighAccuracy: true,
-                        maximumAge: Infinity
-                    }
+                window.navigator.geolocation.getCurrentPosition(function(pos) {
 
                     console.log(pos); 
                     console.log(
                         distance(pos.coords.longitude, pos.coords.latitude, 9.7857237, 56.6382446)
                     ); 
 
-                    var ldistance = distance(pos.coords.longitude, pos.coords.latitude, 9.7832701, 55.9164113);
+                    var ldistance = distance(pos.coords.longitude, pos.coords.latitude, 9.7883645, 56.6383527);
                     document.getElementById("locationDistance").innerHTML = ldistance.toFixed(0);
 
-                });
-            }, 50);
+                },
+                                                                function error(msg) {alert('Please enable your GPS position feature.');},
+                                                                {maximumAge:10000, timeout:5000, enableHighAccuracy: true}
 
-            //Tracking users position
-            watchId = navigator.geolocation.watchPosition(
-                function(pos)
-                processGeolocation,
-                    // Optional settings below
-                    geolocationError,
-                    {
-                    timeout: 0,
-                    enableHighAccuracy: true,
-                    maximumAge: Infinity
 
-                }
-            );
+                                                               );
+
+            }, 1000);
+
+
+
 
         </script>
 
