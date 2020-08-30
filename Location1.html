@@ -27,6 +27,7 @@
 
                 <h3>Afstand</h1> 
                 <h1 id=locationdistance><span id="locationDistance"></span> m</h1>
+                <p><span id="accuracy"></span> m</p>
             </div>
 
         </div>
@@ -36,6 +37,7 @@
                 console.log(pos); 
                 var lat = pos.coords.latitude;
                 var lon = pos.coords.longitude;
+                var acc = pos.coords.accuracy;
             })
 
             function distance(lon1, lat1, lon2, lat2) {
@@ -62,11 +64,13 @@
 
                     console.log(pos); 
                     console.log(
-                        distance(pos.coords.longitude, pos.coords.latitude, 8.54706, 56.543296)
+                        distance(pos.coords.latitude, pos.coords.longitude, 56.541395, 8.545993)
                     ); 
 
                     var ldistance = distance(pos.coords.latitude, pos.coords.longitude, 56.541395, 8.545993);
+                    var acc = pos.coords.accuracy;
                     document.getElementById("locationDistance").innerHTML = ldistance.toFixed(0);
+                    document.getElementById("accuracy").innerHTML = acc;
 
                 },
                                                                 function error(msg) {alert('Please enable your GPS position feature.');},
