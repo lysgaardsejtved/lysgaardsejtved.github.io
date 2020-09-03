@@ -8,6 +8,8 @@ body{
     border-width: 1px;
     border-style: solid;
     border-color: #B18A22;
+    display: flex;
+    flex-direction: column;
 
 }
 

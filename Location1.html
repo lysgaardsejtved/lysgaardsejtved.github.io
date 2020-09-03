@@ -29,8 +29,13 @@
                 <h1 id=locationdistance><span id="locationDistance"></span> m</h1>
                 <!--<p><span id="accuracy"></span> m</p>-->
             </div>
+            
+            <div id="mapdiv" style="flex-grow: 1;"></div>
 
         </div>
+
+        
+        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
         <script>
 
             window.navigator.geolocation.getCurrentPosition(function(pos) { 
@@ -38,6 +43,24 @@
                 var lat = pos.coords.latitude;
                 var lon = pos.coords.longitude;
                 var acc = pos.coords.accuracy;
+                
+                map = new OpenLayers.Map("mapdiv");
+                map.addLayer(new OpenLayers.Layer.OSM());
+
+                var lonLat = new OpenLayers.LonLat( lon , lat )
+                .transform(
+                    new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                    map.getProjectionObject() // to Spherical Mercator Projection
+                );
+
+                var zoom=16;
+
+                var markers = new OpenLayers.Layer.Markers( "Markers" );
+                map.addLayer(markers);
+
+                markers.addMarker(new OpenLayers.Marker(lonLat));
+
+                map.setCenter (lonLat, zoom);
             })
 
             function distance(lon1, lat1, lon2, lat2) {
@@ -82,7 +105,7 @@
             }, 100);
 
 
-            
+
 
         </script>
 

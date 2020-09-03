@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1"/>
+        <meta name="viewport" content="width-device-width, initial-scale=1.0"/>
+
+        <link rel="stylesheet" href="main.css">
+        <title>Marias polterabend</title>
+
+    </head>
+
+    <body>
+
+
+
+
+
+        <div id="mapdiv" style="height:250px"></div>
+        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+        <script>
+            window.navigator.geolocation.getCurrentPosition(function(pos) { 
+                console.log(pos); 
+                var lat = pos.coords.latitude;
+                var lon = pos.coords.longitude;
+                var acc = pos.coords.accuracy;
+
+
+                map = new OpenLayers.Map("mapdiv");
+                map.addLayer(new OpenLayers.Layer.OSM());
+
+                var lonLat = new OpenLayers.LonLat( lon , lat )
+                .transform(
+                    new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                    map.getProjectionObject() // to Spherical Mercator Projection
+                );
+
+                var zoom=16;
+
+                var markers = new OpenLayers.Layer.Markers( "Markers" );
+                map.addLayer(markers);
+
+                markers.addMarker(new OpenLayers.Marker(lonLat));
+
+                map.setCenter (lonLat, zoom);
+
+            })
+        </script>
+
+
+    </body>
+
+
+
+
+</html>
