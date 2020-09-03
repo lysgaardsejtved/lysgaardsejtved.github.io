@@ -6,7 +6,11 @@
         <meta name="viewport" content="width-device-width, initial-scale=1.0"/>
 
         <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
         <title>Marias polterabend</title>
+
 
     </head>
 
@@ -31,20 +35,99 @@
             </div>
 
             <div id="mapdiv" style="flex-grow: 1;"></div>
-            
+            <!--<div id="mapid" style="flex-grow: 1;"></div>-->
+
+            <!--            <div id="map" style="flex-grow: 1;"></div>
+
+<script defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyoZKpeuh55zxDJnAuO2VhxeSQ9I9a5Qk&callback=initMap">
+</script>-->
+
 
 
         </div>
 
 
         <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+
+
         <script>
+            /*            /////////
+            var map, infoWindow;
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: -34.397, lng: 150.644},
+                    zoom: 15
+                });
+                infoWindow = new google.maps.InfoWindow;
+
+                // Try HTML5 geolocation.
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent('Location found.');
+                        infoWindow.open(map);
+                        map.setCenter(pos);
+                    }, function() {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                }
+            }
+
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(browserHasGeolocation ?
+                                      'Error: The Geolocation service failed.' :
+                                      'Error: Your browser doesn\'t support geolocation.');
+                infoWindow.open(map);
+            }*/
+
+            ////////
+
+
+
+
+
 
             window.navigator.geolocation.getCurrentPosition(function(pos) { 
                 console.log(pos); 
                 var lat = pos.coords.latitude;
                 var lon = pos.coords.longitude;
                 var acc = pos.coords.accuracy;
+
+
+
+
+
+
+
+
+                //Open street map
+                map = new OpenLayers.Map("mapdiv");
+                map.addLayer(new OpenLayers.Layer.OSM());
+
+                var lonLat = new OpenLayers.LonLat( lon , lat )
+                .transform(
+                    new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                    map.getProjectionObject() // to Spherical Mercator Projection
+                );
+
+                var zoom=16;
+
+                var markers = new OpenLayers.Layer.Markers( "Markers" );
+                map.addLayer(markers);
+
+                markers.addMarker(new OpenLayers.Marker(lonLat));
+
+                map.setCenter (lonLat, zoom);
 
 
             })
@@ -81,25 +164,21 @@
                     document.getElementById("locationDistance").innerHTML = ldistance.toFixed(0);
                     //document.getElementById("accuracy").innerHTML = acc;
 
-                    
-                    //Map
-                    map = new OpenLayers.Map("mapdiv");
-                    map.addLayer(new OpenLayers.Layer.OSM());
 
-                    var lonLat = new OpenLayers.LonLat( pos.coords.longitude , pos.coords.latitude )
-                    .transform(
-                        new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-                        map.getProjectionObject() // to Spherical Mercator Projection
-                    );
 
-                    var zoom=16;
+/*
 
+                    var lonLat= new OpenLayers.LonLat( pos.coords.longitude , pos.coords.latitude )
                     var markers = new OpenLayers.Layer.Markers( "Markers" );
                     map.addLayer(markers);
 
+                    console.log(lonLat); 
+                    var zoom=16;
+                    markers.removeAll;
                     markers.addMarker(new OpenLayers.Marker(lonLat));
 
                     map.setCenter (lonLat, zoom);
+*/
 
                 },
                                                                 //function error(msg) {alert('Please enable your GPS position feature.');},
