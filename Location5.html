@@ -26,7 +26,7 @@
             </div>
             <div class="text-wrapper">
                 <h7>Ledetråd</h4>
-                <p>Hvor skulle Tomas have være til Copenhell henne, hvis ikke det blev aflyst?</p>
+                <p>Tag Tomas' kommende mellemnavn og byt så første bogstav ud med næste bogstav i alfabetet. Byt andet bogstav ud med tredje vokal i alfabetet. Byt tredje bogstav ud med fjerde bogstav i alfabetet. Det er stedet du skal finde.</p>
             </div>
 
             <div class="locations-wrapper">
@@ -36,14 +36,14 @@
                 <!--<p><span id="accuracy"></span> m</p>-->
             </div>
 
-            <!--<div id="mapdiv" style="flex-grow: 1;"></div>-->
+<!--            <div id="mapdiv" style="flex-grow: 1;"></div>-->
             <!--<div id="mapid" style="flex-grow: 1;"></div>-->
 
-            <div id="map" style="flex-grow: 1;"></div>
+                       <div id="map" style="flex-grow: 1;"></div>
 
-            <script defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyoZKpeuh55zxDJnAuO2VhxeSQ9I9a5Qk&callback=initMap">
-            </script>
+<script defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyoZKpeuh55zxDJnAuO2VhxeSQ9I9a5Qk&callback=initMap">
+</script>
 
 
 
@@ -289,10 +289,10 @@
 
                     console.log(pos); 
                     console.log(
-                        distance(pos.coords.latitude, pos.coords.longitude, 55.6923417,12.6132059)
+                        distance(pos.coords.latitude, pos.coords.longitude, 55.7068454,12.5592302)
                     ); 
 
-                    var ldistance = distance(pos.coords.latitude, pos.coords.longitude, 55.6923417,12.6132059);
+                    var ldistance = distance(pos.coords.latitude, pos.coords.longitude, 55.7068454,12.5592302);
                     var acc = pos.coords.accuracy;
                     document.getElementById("locationDistance").innerHTML = ldistance.toFixed(0);
                     //document.getElementById("accuracy").innerHTML = acc;
