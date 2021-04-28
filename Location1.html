@@ -5,11 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE-edge,chrome=1"/>
         <meta name="viewport" content="width-device-width, initial-scale=1.0"/>
 
-        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/build/ol.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.4.3/css/ol.css">
-
         <link rel="stylesheet" href="main.css">
-
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 
         <title>Marias polterabend</title>
 
@@ -26,7 +24,7 @@
             </div>
             <div class="text-wrapper">
                 <h7>Ledetråd</h4>
-                <p>Hvor skulle Tomas have være til Copenhell henne, hvis ikke det blev aflyst?</p>
+                <p>Din stedsands vil blive kombineret med hvor godt du kender Tomas. Det er din opgave at vi finder vej til dagens lokationer. Under hvert tal gemmer sig en ledetråd; et spørgsmål og en afstandsmåler.</p>
             </div>
 
             <div class="locations-wrapper">
@@ -36,161 +34,30 @@
                 <!--<p><span id="accuracy"></span> m</p>-->
             </div>
 
-            <!--<div id="mapdiv" style="flex-grow: 1;"></div>-->
+            <div id="mapdiv" style="flex-grow: 1;"></div>
             <!--<div id="mapid" style="flex-grow: 1;"></div>-->
 
-            <div id="map" style="flex-grow: 1;"></div>
+            <!--            <div id="map" style="flex-grow: 1;"></div>
 
-            <script defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyoZKpeuh55zxDJnAuO2VhxeSQ9I9a5Qk&callback=initMap">
-            </script>
+<script defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyoZKpeuh55zxDJnAuO2VhxeSQ9I9a5Qk&callback=initMap">
+</script>-->
 
 
 
         </div>
 
 
-
+        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
 
 
         <script>
-            /////////
+            /*            /////////
             var map, infoWindow;
             function initMap() {
                 map = new google.maps.Map(document.getElementById('map'), {
                     center: {lat: -34.397, lng: 150.644},
-                    zoom: 15,
-                    styles: [
-    {
-        "featureType": "administrative",
-        "elementType": "labels.text.fill",
-        "stylers": [
-            {
-                "color": "#444444"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.country",
-        "elementType": "geometry.stroke",
-        "stylers": [
-            {
-                "visibility": "on"
-            },
-            {
-                "weight": "1.17"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.country",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "administrative.locality",
-        "elementType": "labels.text",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#f2f2f2"
-            }
-        ]
-    },
-    {
-        "featureType": "landscape.man_made",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "saturation": "2"
-            },
-            {
-                "color": "#b18a22"
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "road",
-        "elementType": "all",
-        "stylers": [
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 45
-            }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "simplified"
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "elementType": "labels.icon",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "transit",
-        "elementType": "all",
-        "stylers": [
-            {
-                "visibility": "off"
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [
-            {
-                "color": "#c2a26e"
-            },
-            {
-                "visibility": "on"
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "elementType": "geometry.fill",
-        "stylers": [
-            {
-                "color": "#d3dee8"
-            }
-        ]
-    }
-]
+                    zoom: 15
                 });
                 infoWindow = new google.maps.InfoWindow;
 
@@ -203,7 +70,7 @@
                         };
 
                         infoWindow.setPosition(pos);
-                        infoWindow.setContent('Dit udgangspunkt');
+                        infoWindow.setContent('Location found.');
                         infoWindow.open(map);
                         map.setCenter(pos);
                     }, function() {
@@ -221,7 +88,7 @@
                                       'Error: The Geolocation service failed.' :
                                       'Error: Your browser doesn\'t support geolocation.');
                 infoWindow.open(map);
-            }
+            }*/
 
             ////////
 
@@ -289,17 +156,17 @@
 
                     console.log(pos); 
                     console.log(
-                        distance(pos.coords.latitude, pos.coords.longitude, 55.6923417,12.6132059)
+                        distance(pos.coords.latitude, pos.coords.longitude, 56.541395, 8.545993)
                     ); 
 
-                    var ldistance = distance(pos.coords.latitude, pos.coords.longitude, 55.6923417,12.6132059);
+                    var ldistance = distance(pos.coords.latitude, pos.coords.longitude, 56.541395, 8.545993);
                     var acc = pos.coords.accuracy;
                     document.getElementById("locationDistance").innerHTML = ldistance.toFixed(0);
                     //document.getElementById("accuracy").innerHTML = acc;
 
 
 
-                    /*
+/*
 
                     var lonLat= new OpenLayers.LonLat( pos.coords.longitude , pos.coords.latitude )
                     var markers = new OpenLayers.Layer.Markers( "Markers" );
@@ -314,8 +181,8 @@
 */
 
                 },
-                                                                function error(msg) {alert('Please enable your GPS position feature.');},
-                                                                {maximumAge:4000, timeout:2000, enableHighAccuracy: true}
+                                                                //function error(msg) {alert('Please enable your GPS position feature.');},
+                                                                //{maximumAge:4000, timeout:2000, enableHighAccuracy: true}
 
 
                                                                );
